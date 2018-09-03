@@ -22,9 +22,9 @@ class PrevDetailPresenter(private val view: PrevDetailInterfaces,
             )
 
             uiThread {
-                view.hideLoading()
                 println("Response => ${data.events}")
                 view.setEvent(data.events)
+                view.hideLoading()
                 //view.showTeamList(data.events)
             }
         }

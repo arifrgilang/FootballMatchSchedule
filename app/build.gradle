@@ -14,6 +14,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BASE_URL", "\"https://www.thesportsdb.com/api/v1/json/1/\""
+        //buildConfigField "String", "BASE_URL", "\"https://private-044be-dicodingfootball.apiary-mock.com/api/v1/json/1/\""
     }
     buildTypes {
         release {
