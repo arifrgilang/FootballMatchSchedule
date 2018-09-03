@@ -43,7 +43,10 @@ class PrevMatchViewHolder(view: View) : RecyclerView.ViewHolder(view){
         eventDate.text = match.eventDate
         //var event: Event =
         itemView.setOnClickListener {
-            itemView.context.startActivity<PrevDetailActivity>("MATCH_ID" to match.eventId)
+            itemView.context.startActivity<PrevDetailActivity>(
+                    "MATCH_ID" to match.eventId,
+                    "HOME_NAME" to match.homeTeamName,
+                    "AWAY_NAME" to match.awayTeamName)
         }
     }
 }

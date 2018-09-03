@@ -3,10 +3,9 @@ package com.rz.footballmatchschedule.presenter
 import com.google.gson.Gson
 import com.rz.footballmatchschedule.api.ApiRepository
 import com.rz.footballmatchschedule.api.TheSportDBApi
-import com.rz.footballmatchschedule.interfaces.MainInterfaces
 import com.rz.footballmatchschedule.interfaces.PrevDetailInterfaces
-import com.rz.footballmatchschedule.model.EventList
-import com.rz.footballmatchschedule.model.MatchList
+import com.rz.footballmatchschedule.model.EventResponse
+import com.rz.footballmatchschedule.model.TeamResponse
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -18,7 +17,7 @@ class PrevDetailPresenter(private val view: PrevDetailInterfaces,
         doAsync {
             val data = gson.fromJson(apiRepo
                     .doRequest(TheSportDBApi.getEventsResponse(eventId)),
-                    EventList::class.java
+                    EventResponse::class.java
             )
 
             uiThread {
@@ -26,6 +25,21 @@ class PrevDetailPresenter(private val view: PrevDetailInterfaces,
                 view.setEvent(data.events)
                 view.hideLoading()
                 //view.showTeamList(data.events)
+            }
+        }
+    }
+
+    fun getBadges(teamName: String?){
+        view.showLoading()
+        doAsync {
+            val homeBadgeUrl = gson.fromJson(apiRepo
+                    .doRequest(TheSportDBApi.getTeamsResponse(teamName)),
+                    TeamResponse::class.java
+            )
+
+            uiThread {
+                println("Response => ${homeBadgeUrl}")
+
             }
         }
     }

@@ -12,7 +12,7 @@ import com.rz.footballmatchschedule.R
 import com.rz.footballmatchschedule.adapter.NextAdapter
 import com.rz.footballmatchschedule.adapter.PrevAdapter
 import com.rz.footballmatchschedule.api.ApiRepository
-import com.rz.footballmatchschedule.interfaces.MainInterfaces
+import com.rz.footballmatchschedule.interfaces.PrevInterfaces
 import com.rz.footballmatchschedule.presenter.MainPresenter
 import com.rz.footballmatchschedule.utils.invisible
 import com.rz.footballmatchschedule.model.Match
@@ -23,7 +23,7 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
-class MainActivity : AppCompatActivity(), MainInterfaces {
+class PrevActivity : AppCompatActivity(), PrevInterfaces {
     private var resMatchList: MutableList<Match> = mutableListOf()
 
     private lateinit var prevAdapter: PrevAdapter

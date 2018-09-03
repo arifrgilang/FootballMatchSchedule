@@ -7,7 +7,7 @@ object TheSportDBApi {
     private const val PASTLEAGUE: String = "eventspastleague.php?id="
     private const val NEXTLEAGUE: String = "eventsnextleague.php?id="
     private const val SEARCHEVENTS: String = "lookupevent.php?id="
-    private const val SEARCHTEAMS: String = "lookup_all_teams.php?id="
+    private const val SEARCHTEAMS: String = "searchteams.php?t="
 
     private lateinit var apiType: String
     fun getMatchesResponse(type: String?, leagueId: String?): String {
@@ -24,7 +24,7 @@ object TheSportDBApi {
         return BuildConfig.BASE_URL + SEARCHEVENTS + eventId
     }
 
-    fun getTeamsResponse(teamId: String?): String {
-        return BuildConfig.BASE_URL + SEARCHTEAMS + teamId
+    fun getTeamsResponse(teamName: String?): String {
+        return BuildConfig.BASE_URL + SEARCHTEAMS + teamName
     }
 }

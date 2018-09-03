@@ -11,6 +11,7 @@ import com.rz.footballmatchschedule.R
 import com.rz.footballmatchschedule.api.ApiRepository
 import com.rz.footballmatchschedule.interfaces.PrevDetailInterfaces
 import com.rz.footballmatchschedule.model.Event
+import com.rz.footballmatchschedule.model.Team
 import com.rz.footballmatchschedule.presenter.PrevDetailPresenter
 import com.rz.footballmatchschedule.utils.invisible
 import com.rz.footballmatchschedule.utils.visible
@@ -22,7 +23,14 @@ class PrevDetailActivity : AppCompatActivity(), PrevDetailInterfaces {
 
     private lateinit var resEvent: Event
     private lateinit var eventId: String
-    private lateinit var score: String
+
+    private lateinit var strHomeName: String
+    private lateinit var strAwayName: String
+    private lateinit var homeTeamObj: Team
+    private lateinit var awayTeamObj: Team
+    private lateinit var homeBadgeUrl: String
+    private lateinit var awayBadgeUrl: String
+
     private lateinit var progressBar: ProgressBar
 
     private lateinit var matchDate: TextView
@@ -65,6 +73,15 @@ class PrevDetailActivity : AppCompatActivity(), PrevDetailInterfaces {
         setView()
     }
 
+    override fun setHomeBadges(teams: List<Team>) {
+        homeTeamObj = teams[0]
+        homeBadgeUrl = homeTeamObj.strTeamBadge
+    }
+    override fun setAwayBadges(teams: List<Team>) {
+        awayTeamObj = teams[0]
+        awayBadgeUrl = awayTeamObj.strTeamBadge
+    }
+
     fun setView() {
         matchDate.text = resEvent.dateEvent
         scoreText.text = resEvent.intHomeScore + "-" + resEvent.intAwayScore
@@ -98,6 +115,8 @@ class PrevDetailActivity : AppCompatActivity(), PrevDetailInterfaces {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         eventId = intent.getStringExtra("MATCH_ID")
+        strHomeName = intent.getStringExtra("HOME_NAME")
+        strAwayName = intent.getStringExtra("AWAY_NAME")
 
         linearLayout {
             lparams(width = matchParent, height = wrapContent)
@@ -639,5 +658,7 @@ class PrevDetailActivity : AppCompatActivity(), PrevDetailInterfaces {
         val gson = Gson()
         prevPresenter = PrevDetailPresenter(this, request, gson)
         prevPresenter.getEventList(eventId)
+        prevPresenter.getBadges(strHomeName)
+        prevPresenter.getBadges(strAwayName)
     }
 }
