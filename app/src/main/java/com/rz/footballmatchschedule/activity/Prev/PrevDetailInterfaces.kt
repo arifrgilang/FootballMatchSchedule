@@ -1,4 +1,4 @@
-package com.rz.footballmatchschedule.interfaces
+package com.rz.footballmatchschedule.activity.Prev
 
 import com.rz.footballmatchschedule.model.Event
 import com.rz.footballmatchschedule.model.Team

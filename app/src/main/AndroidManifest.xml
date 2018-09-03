@@ -11,14 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.PrevActivity">
+        <activity android:name=".activity.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PrevDetailActivity"/>
+        <activity
+            android:name=".activity.Prev.PrevDetailActivity"
+            android:parentActivityName=".activity.main.MainActivity"/>
+        <activity
+            android:name=".activity.Next.NextDetailActivity"
+            android:parentActivityName=".activity.main.MainActivity"/>
     </application>
 
 </manifest>

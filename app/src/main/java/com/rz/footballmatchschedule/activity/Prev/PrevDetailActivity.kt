@@ -1,4 +1,4 @@
-package com.rz.footballmatchschedule.activity
+package com.rz.footballmatchschedule.activity.Prev
 
 import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
@@ -9,10 +9,8 @@ import android.widget.*
 import com.google.gson.Gson
 import com.rz.footballmatchschedule.R
 import com.rz.footballmatchschedule.api.ApiRepository
-import com.rz.footballmatchschedule.interfaces.PrevDetailInterfaces
 import com.rz.footballmatchschedule.model.Event
 import com.rz.footballmatchschedule.model.Team
-import com.rz.footballmatchschedule.presenter.PrevDetailPresenter
 import com.rz.footballmatchschedule.utils.invisible
 import com.rz.footballmatchschedule.utils.visible
 import com.squareup.picasso.Picasso

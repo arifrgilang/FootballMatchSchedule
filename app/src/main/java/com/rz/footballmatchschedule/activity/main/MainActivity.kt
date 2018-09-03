@@ -1,4 +1,4 @@
-package com.rz.footballmatchschedule.activity
+package com.rz.footballmatchschedule.activity.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -9,11 +9,9 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import com.google.gson.Gson
 import com.rz.footballmatchschedule.R
-import com.rz.footballmatchschedule.adapter.NextAdapter
-import com.rz.footballmatchschedule.adapter.PrevAdapter
+import com.rz.footballmatchschedule.activity.main.adapter.NextAdapter
+import com.rz.footballmatchschedule.activity.main.adapter.PrevAdapter
 import com.rz.footballmatchschedule.api.ApiRepository
-import com.rz.footballmatchschedule.interfaces.PrevInterfaces
-import com.rz.footballmatchschedule.presenter.MainPresenter
 import com.rz.footballmatchschedule.utils.invisible
 import com.rz.footballmatchschedule.model.Match
 import com.rz.footballmatchschedule.utils.visible
@@ -23,7 +21,7 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
-class PrevActivity : AppCompatActivity(), PrevInterfaces {
+class MainActivity : AppCompatActivity(), MainInterfaces {
     private var resMatchList: MutableList<Match> = mutableListOf()
 
     private lateinit var prevAdapter: PrevAdapter

@@ -1,14 +1,17 @@
-package com.rz.footballmatchschedule.view
+package com.rz.footballmatchschedule.activity.Prev
 
+import android.graphics.Typeface
+import android.text.Layout
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.rz.footballmatchschedule.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 
-class NextMatchItemView : AnkoComponent<ViewGroup> {
+class PrevViewHolder : AnkoComponent<ViewGroup>{
     override fun createView(ui: AnkoContext<ViewGroup>): View {
         return with(ui){
             cardView{
@@ -41,8 +44,11 @@ class NextMatchItemView : AnkoComponent<ViewGroup> {
                             width = dip(0)
                             weight = 5f
                         }
-                        // space
-                        view{
+                        // Team A Score
+                        textView{
+                            id = R.id.team_home_score
+                            textSize = 20f
+                            textAlignment = View.TEXT_ALIGNMENT_TEXT_END
                         }.lparams{
                             height = wrapContent
                             width = dip(0)
@@ -59,8 +65,11 @@ class NextMatchItemView : AnkoComponent<ViewGroup> {
                             width = dip(0)
                             weight = 1f
                         }
-                        // space
-                        view{
+                        // Team B Score
+                        textView{
+                            id = R.id.team_away_score
+                            textSize = 20f
+                            textAlignment = View.TEXT_ALIGNMENT_TEXT_START
                         }.lparams{
                             height = wrapContent
                             width = dip(0)

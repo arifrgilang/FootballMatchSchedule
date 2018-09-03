@@ -1,9 +1,8 @@
-package com.rz.footballmatchschedule.presenter
+package com.rz.footballmatchschedule.activity.Prev
 
 import com.google.gson.Gson
 import com.rz.footballmatchschedule.api.ApiRepository
 import com.rz.footballmatchschedule.api.TheSportDBApi
-import com.rz.footballmatchschedule.interfaces.PrevDetailInterfaces
 import com.rz.footballmatchschedule.model.EventResponse
 import com.rz.footballmatchschedule.model.TeamResponse
 import org.jetbrains.anko.doAsync
