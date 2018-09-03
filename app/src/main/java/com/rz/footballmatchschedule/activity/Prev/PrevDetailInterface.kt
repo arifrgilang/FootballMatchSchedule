@@ -3,7 +3,7 @@ package com.rz.footballmatchschedule.activity.Prev
 import com.rz.footballmatchschedule.model.Event
 import com.rz.footballmatchschedule.model.Team
 
-interface PrevDetailInterfaces {
+interface PrevDetailInterface {
     fun showLoading()
     fun hideLoading()
     fun setEvent(event: List<Event>)

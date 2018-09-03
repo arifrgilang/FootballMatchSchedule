@@ -1,4 +1,4 @@
-package com.rz.footballmatchschedule.activity.Prev
+package com.rz.footballmatchschedule.activity.Next
 
 import com.google.gson.Gson
 import com.rz.footballmatchschedule.api.ApiRepository
@@ -8,7 +8,7 @@ import com.rz.footballmatchschedule.model.TeamResponse
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
-class PrevDetailPresenter(private val view: PrevDetailInterface,
+class NextDetailPresenter(private val view: NextDetailInterface,
                           private val apiRepo: ApiRepository,
                           private val gson: Gson) {
     fun getEventList(eventId: String?){

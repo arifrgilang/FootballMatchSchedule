@@ -21,7 +21,7 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
-class MainActivity : AppCompatActivity(), MainInterfaces {
+class MainActivity : AppCompatActivity(), MainInterface {
     private var resMatchList: MutableList<Match> = mutableListOf()
 
     private lateinit var prevAdapter: PrevAdapter

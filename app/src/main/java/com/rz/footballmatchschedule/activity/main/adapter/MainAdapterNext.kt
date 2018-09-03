@@ -5,9 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.rz.footballmatchschedule.R
+import com.rz.footballmatchschedule.activity.Next.NextDetailActivity
 import com.rz.footballmatchschedule.model.Match
 import com.rz.footballmatchschedule.activity.Prev.PrevViewHolder
 import org.jetbrains.anko.AnkoContext
+import org.jetbrains.anko.startActivity
 
 class NextAdapter (private val matches: List<Match>)
     : RecyclerView.Adapter<NextMatchViewHolder>(){
@@ -32,5 +34,13 @@ class NextMatchViewHolder(view: View) : RecyclerView.ViewHolder(view){
         teamAwayName.text = match.awayTeamName
 
         eventDate.text = match.eventDate
+        //
+        itemView.setOnClickListener{
+            itemView.context.startActivity<NextDetailActivity>(
+                    "MATCH_ID" to match.eventId,
+                    "HOME_NAME" to match.homeTeamName,
+                    "AWAY_NAME" to match.awayTeamName
+            )
+        }
     }
 }

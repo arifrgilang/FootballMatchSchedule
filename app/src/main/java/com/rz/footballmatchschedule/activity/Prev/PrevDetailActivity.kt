@@ -16,7 +16,7 @@ import com.rz.footballmatchschedule.utils.visible
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 
-class PrevDetailActivity : AppCompatActivity(), PrevDetailInterfaces {
+class PrevDetailActivity : AppCompatActivity(), PrevDetailInterface {
     private var resEventList: MutableList<Event> = mutableListOf()
     private lateinit var prevPresenter: PrevDetailPresenter
 

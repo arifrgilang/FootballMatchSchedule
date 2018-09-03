@@ -7,7 +7,7 @@ import com.rz.footballmatchschedule.api.TheSportDBApi
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
-class MainPresenter (private val view: MainInterfaces,
+class MainPresenter (private val view: MainInterface,
                      private val apiRepo: ApiRepository,
                      private val gson: Gson) {
     fun getMatchList(type: String?, match: String?) {
