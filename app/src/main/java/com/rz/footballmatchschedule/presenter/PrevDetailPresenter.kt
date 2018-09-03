@@ -24,22 +24,26 @@ class PrevDetailPresenter(private val view: PrevDetailInterfaces,
                 println("Response => ${data.events}")
                 view.setEvent(data.events)
                 view.hideLoading()
-                //view.showTeamList(data.events)
             }
         }
     }
 
-    fun getBadges(teamName: String?){
+    fun getBadges(type: String, teamName: String?){
         view.showLoading()
         doAsync {
-            val homeBadgeUrl = gson.fromJson(apiRepo
+            val badgeUrl = gson.fromJson(apiRepo
                     .doRequest(TheSportDBApi.getTeamsResponse(teamName)),
                     TeamResponse::class.java
             )
 
             uiThread {
-                println("Response => ${homeBadgeUrl}")
-
+                println("Response => ${badgeUrl}")
+                if (type == "home"){
+                    view.setHomeBadges(badgeUrl.teams)
+                } else if (type == "away"){
+                    view.setAwayBadges(badgeUrl.teams)
+                }
+                view.hideLoading()
             }
         }
     }

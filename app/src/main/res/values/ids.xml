@@ -11,15 +11,4 @@
     <item name="bottom_bar" type="id" />
     <item name="bottom_nav_view" type="id" />
 
-    <item name="prev_detail_match_date" type="id" />
-    <item name="prev_detail_home_name" type="id" />
-    <item name="prev_detail_away_name" type="id" />
-    <item name="prev_detail_home_badges" type="id" />
-    <item name="prev_detail_away_badges" type="id" />
-    <item name="prev_detail_score" type="id" />
-    <item name="prev_detail_home_formation" type="id" />
-    <item name="prev_detail_away_formation" type="id" />
-    <item name="prev_detail_home_scorer" type="id" />
-    <item name="prev_detail_away_scorer" type="id" />
-
 </resources>
