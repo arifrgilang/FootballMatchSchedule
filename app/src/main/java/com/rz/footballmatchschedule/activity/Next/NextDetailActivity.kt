@@ -45,37 +45,6 @@ class NextDetailActivity : AppCompatActivity(), NextDetailInterface {
     private lateinit var awayName: TextView
     private lateinit var awayBadges: ImageView
 
-    override fun showLoading() {
-        progressBar.visible()
-    }
-
-    override fun hideLoading() {
-        progressBar.invisible()
-    }
-
-    override fun setEvent(list: List<Event>) {
-        resEvent = list[0]
-        setView()
-    }
-
-    override fun setHomeBadges(teams: List<Team>) {
-        homeTeamObj = teams[0]
-        homeBadgeUrl = homeTeamObj.strTeamBadge
-        Picasso.get().load(homeBadgeUrl).into(homeBadges)
-    }
-
-    override fun setAwayBadges(teams: List<Team>) {
-        awayTeamObj = teams[0]
-        awayBadgeUrl = awayTeamObj.strTeamBadge
-        Picasso.get().load(awayBadgeUrl).into(awayBadges)
-    }
-
-    fun setView() {
-        matchDate.text = resEvent.dateEvent
-        matchTime.text = resEvent.strTime
-        matchTitle.text = resEvent.strEvent
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         eventId = intent.getStringExtra("MATCH_ID")
@@ -207,6 +176,37 @@ class NextDetailActivity : AppCompatActivity(), NextDetailInterface {
 
         }
         init()
+    }
+
+    override fun showLoading() {
+        progressBar.visible()
+    }
+
+    override fun hideLoading() {
+        progressBar.invisible()
+    }
+
+    override fun setEvent(list: List<Event>) {
+        resEvent = list[0]
+        setView()
+    }
+
+    override fun setHomeBadges(teams: List<Team>) {
+        homeTeamObj = teams[0]
+        homeBadgeUrl = homeTeamObj.strTeamBadge
+        Picasso.get().load(homeBadgeUrl).into(homeBadges)
+    }
+
+    override fun setAwayBadges(teams: List<Team>) {
+        awayTeamObj = teams[0]
+        awayBadgeUrl = awayTeamObj.strTeamBadge
+        Picasso.get().load(awayBadgeUrl).into(awayBadges)
+    }
+
+    fun setView() {
+        matchDate.text = resEvent.dateEvent
+        matchTime.text = resEvent.strTime
+        matchTitle.text = resEvent.strEvent
     }
 
     fun init() {

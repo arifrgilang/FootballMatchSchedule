@@ -59,57 +59,6 @@ class PrevDetailActivity : AppCompatActivity(), PrevDetailInterface {
     private lateinit var awayYellow: TextView
     private lateinit var awayRed: TextView
 
-    override fun showLoading() {
-        progressBar.visible()
-    }
-
-    override fun hideLoading() {
-        progressBar.invisible()
-    }
-
-    override fun setEvent(list: List<Event>) {
-        resEvent = list[0]
-        setView()
-    }
-
-    override fun setHomeBadges(teams: List<Team>) {
-        homeTeamObj = teams[0]
-        homeBadgeUrl = homeTeamObj.strTeamBadge
-        Picasso.get().load(homeBadgeUrl).into(homeBadges)
-    }
-    override fun setAwayBadges(teams: List<Team>) {
-        awayTeamObj = teams[0]
-        awayBadgeUrl = awayTeamObj.strTeamBadge
-        Picasso.get().load(awayBadgeUrl).into(awayBadges)
-    }
-
-    fun setView() {
-        matchDate.text = resEvent.dateEvent
-        scoreText.text = resEvent.intHomeScore + "-" + resEvent.intAwayScore
-
-        homeName.text = resEvent.strHomeTeam
-        homeFormation.text = resEvent.strHomeFormation
-        homeScorer.text = resEvent.strHomeGoalDetails
-        homeGK.text = resEvent.strHomeLineupGoalKeeper
-        homeDef.text = resEvent.strHomeLineupDefense
-        homeMid.text = resEvent.strHomeLineupMidfield
-        homeForward.text = resEvent.strHomeLineupForward
-        homeSubs.text = resEvent.strHomeLineupSubstitutes
-        homeYellow.text = resEvent.strHomeYellowCards
-        homeRed.text = resEvent.strHomeRedCards
-
-        awayName.text = resEvent.strAwayTeam
-        awayFormation.text = resEvent.strAwayFormation
-        awayScorer.text = resEvent.strAwayGoalDetails
-        awayGK.text = resEvent.strAwayLineupGoalkeeper
-        awayDef.text = resEvent.strAwayLineupDefense
-        awayMid.text = resEvent.strAwayLineupMidfield
-        awayForward.text = resEvent.strAwayLineupForward
-        awaySubs.text = resEvent.strAwayLineupSubstitutes
-        awayYellow.text = resEvent.strAwayYellowCards
-        awayRed.text = resEvent.strAwayRedCards
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         eventId = intent.getStringExtra("MATCH_ID")
@@ -645,10 +594,61 @@ class PrevDetailActivity : AppCompatActivity(), PrevDetailInterface {
                         }
                     }.lparams(width = matchParent, height = wrapContent)
                 }.lparams(width = matchParent, height = wrapContent)
-                }
+            }
 
         }
         init()
+    }
+
+    override fun showLoading() {
+        progressBar.visible()
+    }
+
+    override fun hideLoading() {
+        progressBar.invisible()
+    }
+    //// Below this is setter ////
+    override fun setEvent(list: List<Event>) {
+        resEvent = list[0]
+        setView()
+    }
+
+    override fun setHomeBadges(teams: List<Team>) {
+        homeTeamObj = teams[0]
+        homeBadgeUrl = homeTeamObj.strTeamBadge
+        Picasso.get().load(homeBadgeUrl).into(homeBadges)
+    }
+    override fun setAwayBadges(teams: List<Team>) {
+        awayTeamObj = teams[0]
+        awayBadgeUrl = awayTeamObj.strTeamBadge
+        Picasso.get().load(awayBadgeUrl).into(awayBadges)
+    }
+
+    fun setView() {
+        matchDate.text = resEvent.dateEvent
+        scoreText.text = resEvent.intHomeScore + "-" + resEvent.intAwayScore
+
+        homeName.text = resEvent.strHomeTeam
+        homeFormation.text = resEvent.strHomeFormation
+        homeScorer.text = resEvent.strHomeGoalDetails
+        homeGK.text = resEvent.strHomeLineupGoalKeeper
+        homeDef.text = resEvent.strHomeLineupDefense
+        homeMid.text = resEvent.strHomeLineupMidfield
+        homeForward.text = resEvent.strHomeLineupForward
+        homeSubs.text = resEvent.strHomeLineupSubstitutes
+        homeYellow.text = resEvent.strHomeYellowCards
+        homeRed.text = resEvent.strHomeRedCards
+
+        awayName.text = resEvent.strAwayTeam
+        awayFormation.text = resEvent.strAwayFormation
+        awayScorer.text = resEvent.strAwayGoalDetails
+        awayGK.text = resEvent.strAwayLineupGoalkeeper
+        awayDef.text = resEvent.strAwayLineupDefense
+        awayMid.text = resEvent.strAwayLineupMidfield
+        awayForward.text = resEvent.strAwayLineupForward
+        awaySubs.text = resEvent.strAwayLineupSubstitutes
+        awayYellow.text = resEvent.strAwayYellowCards
+        awayRed.text = resEvent.strAwayRedCards
     }
 
     fun init() {
