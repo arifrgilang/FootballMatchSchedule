@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import com.google.gson.Gson
 import com.rz.footballmatchschedule.R
+import com.rz.footballmatchschedule.activity.main.adapter.FavAdapter
 import com.rz.footballmatchschedule.activity.main.adapter.NextAdapter
 import com.rz.footballmatchschedule.activity.main.adapter.PrevAdapter
 import com.rz.footballmatchschedule.api.ApiRepository
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity(), MainInterface {
 
     private lateinit var prevAdapter: PrevAdapter
     private lateinit var nextAdapter: NextAdapter
+    private lateinit var favAdapter: FavAdapter
     private lateinit var presenter: MainPresenter
 
     private lateinit var swipeLayout: SwipeRefreshLayout
@@ -72,14 +74,20 @@ class MainActivity : AppCompatActivity(), MainInterface {
                         .setOnNavigationItemSelectedListener { item ->
                             when (item.itemId) {
                                 R.id.prev_menu -> {
-                                    if (resMatchList.isEmpty() || listMatches.adapter == nextAdapter) {
+                                    if (resMatchList.isEmpty() || listMatches.adapter != prevAdapter) {
                                         loadMatches("prev")
                                     }
                                     return@setOnNavigationItemSelectedListener true
                                 }
                                 R.id.next_menu -> {
-                                    if (resMatchList.isEmpty() || listMatches.adapter == prevAdapter) {
+                                    if (resMatchList.isEmpty() || listMatches.adapter != nextAdapter) {
                                         loadMatches("next")
+                                    }
+                                    return@setOnNavigationItemSelectedListener true
+                                }
+                                R.id.fav_menu -> {
+                                    if (resMatchList.isEmpty() || listMatches.adapter != favAdapter) {
+                                        loadMatches("fav")
                                     }
                                     return@setOnNavigationItemSelectedListener true
                                 }
@@ -92,12 +100,18 @@ class MainActivity : AppCompatActivity(), MainInterface {
         }
         //
         swipeLayout.onRefresh {
-            val type: String = if (!isPrevAdapter()) "next" else "prev"
+            var type: String = ""
+            when (listMatches.adapter) {
+                prevAdapter -> type = "prev"
+                nextAdapter -> type = "next"
+                favAdapter -> type = "fav"
+            }
             presenter.getMatchList(type, getString(R.string.league_id))
         }
         //
         prevAdapter = PrevAdapter(resMatchList)
         nextAdapter = NextAdapter(resMatchList)
+        favAdapter = FavAdapter(resMatchList)
         loadMatches("prev")
     }
 
@@ -127,11 +141,15 @@ class MainActivity : AppCompatActivity(), MainInterface {
         val gson = Gson()
         presenter = MainPresenter(this, request, gson)
         // setup RVAdapter, changing upon bottom bar clicked
-        listMatches.adapter = if (!isPrevAdapter()) prevAdapter else nextAdapter
+        when (type) {
+            "prev" -> listMatches.adapter = prevAdapter
+            "next" -> listMatches.adapter = nextAdapter
+            "fav" -> listMatches.adapter = favAdapter
+        }
+
         //
         presenter.getMatchList(type, getString(R.string.league_id))
     }
 
-    fun isPrevAdapter(): Boolean = listMatches.adapter == prevAdapter
 }
 

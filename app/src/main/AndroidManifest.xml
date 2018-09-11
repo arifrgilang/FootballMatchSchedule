@@ -20,10 +20,13 @@
         </activity>
         <activity
             android:name=".activity.Prev.PrevDetailActivity"
-            android:parentActivityName=".activity.main.MainActivity"/>
+            android:parentActivityName=".activity.main.MainActivity" />
         <activity
             android:name=".activity.Next.NextDetailActivity"
-            android:parentActivityName=".activity.main.MainActivity"/>
+            android:parentActivityName=".activity.main.MainActivity" />
+        <activity
+            android:name=".activity.Fav.FavDetailActivity"
+            android:parentActivityName=".activity.main.MainActivity" />
     </application>
 
 </manifest>

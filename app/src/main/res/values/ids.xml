@@ -10,5 +10,6 @@
     <item name="progress_bar" type="id" />
     <item name="bottom_bar" type="id" />
     <item name="bottom_nav_view" type="id" />
+    <item name="home_fragment" type="id" />
 
 </resources>
